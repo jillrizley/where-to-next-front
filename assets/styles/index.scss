@@ -21,6 +21,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .img-description {
   position: absolute;
+  -webkit-text-stroke: 2.5px black;
   text-align: center;
   font-size: 60px;
   top: 0;
