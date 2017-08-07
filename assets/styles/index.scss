@@ -1,2 +1,51 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+//
+//
+// /* relevant styles */
+.img-wrap {
+  position: relative;
+  height: 300px;
+  width: 400px;
+  transition: filter .8s;
+  display: inline-block;
+  margin: 5px;
+
+}
+.img-img {
+  border-radius: 80px;
+  transition: border-radius .5s;
+}
+
+//
+
+.img-description {
+  position: absolute;
+  text-align: center;
+  font-size: 60px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  transition: opacity .2s, visibility .2s;
+}
+//
+.img-wrap:hover .img-description {
+  visibility: visible;
+  opacity: .75;
+
+}
+//
+.img-wrap:hover {
+  filter: sepia(75%)
+}
+
+.img-wrap:hover img {
+   filter: blur(1.5px);
+   border-radius: 30px;
+}
+//
