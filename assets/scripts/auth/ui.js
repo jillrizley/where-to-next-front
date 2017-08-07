@@ -15,6 +15,7 @@ const signUpError = (response) => {
 const signInSuccess = (response) => {
   console.log('signInSuccess')
   store.user = response.user
+  console.log(store.user)
   $('#-signup-modal').modal('hide')
   $('#-signup-button').addClass('hidden')
   $('#-logout-button').removeClass('hidden')
