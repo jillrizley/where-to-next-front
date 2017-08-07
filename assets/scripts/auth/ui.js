@@ -1,12 +1,14 @@
-const store = require('./store')
+const store = require('../store')
 
 const signUpSuccess = (response) => {
+  console.log('signUpSuccess')
 }
 
 const signUpError = (response) => {
 }
 
 const signInSuccess = (response) => {
+  console.log('signInSuccess')
   store.user = response.user
   $('#-signup-modal').modal('hide')
   $('#-signup-button').addClass('hidden')
@@ -18,6 +20,7 @@ const signInError = (response) => {
 }
 
 const signOutSuccess = (response) => {
+  console.log('signOutSuccess')
   store.user = undefined
   $('#-signup-button').removeClass('hidden')
   $('#-logout-button').addClass('hidden')
@@ -29,6 +32,7 @@ const signOutError = (response) => {
 }
 
 const changePasswordSuccess = (response) => {
+  console.log('changePasswordSuccess')
   $('#-changepwd-modal').modal('hide')
 }
 
