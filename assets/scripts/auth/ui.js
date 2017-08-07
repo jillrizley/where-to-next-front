@@ -1,7 +1,13 @@
 const store = require('../store')
 
+const failure = (response) => {
+  console.log('There was an error!')
+  console.log(response)
+}
+
 const signUpSuccess = (response) => {
   console.log('signUpSuccess')
+
 }
 
 const signUpError = (response) => {
@@ -54,7 +60,8 @@ module.exports = {
   signOutError,
   changePasswordSuccess,
   changePasswordError,
-  forceSignIn
+  forceSignIn,
+  failure
 }
 
 
