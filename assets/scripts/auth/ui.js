@@ -7,7 +7,6 @@ const failure = (response) => {
 
 const signUpSuccess = (response) => {
   console.log('signUpSuccess')
-
 }
 
 const signUpError = (response) => {
