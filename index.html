@@ -35,6 +35,12 @@
                 <li class="hidden" id="-locations-navbar-button"><a href="#">Locations</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                <a id="locations-dropdown-button" href="#" class="dropdown-toggle hidden" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Locations<span class="caret"></span></a>
+                <ul id="locations-dropdown" class="dropdown-menu">
+                  <li class="dropdown-header">No locations yet!</li>
+                </ul>
+              </li>
                 <li><a class="hidden" id="-logout-button" href="#">Logout</a></li>
                 <li><a class="hidden" id="-changepwd-button" href="#" data-toggle="modal" data-target="#-changepwd-modal">Change Password</a></li>
               </ul>
@@ -43,15 +49,15 @@
         </nav>
         <!-- NAVBAR END -->
         <!-- Location info area -->
-        <div class="row">
+        <div id="location-display" class="row location-display">
           <div class="col-lg-4 col-lg-offset-1">
             <h1 id="location-title" class="text-center">Location Name</h1>
             <hr />
             <h3>
                - Activities -
-              <button type="button" class="btn btn-success">Add Activity</button>
+              <button type="button" class="btn btn-info">Add Activity</button>
             </h3>
-            <div class="activities" id="activities">
+            <div class="activities" id="activities-display">
               <!-- <div>activity 1</div>
               <div>activity 2</div>
               <div>activity 3</div>
@@ -61,9 +67,9 @@
             <hr />
             <h3>
                - Landmarks -
-              <button type="button" class="btn btn-primary">Add Landmark</button>
+              <button type="button" class="btn btn-info">Add Landmark</button>
             </h3>
-            <div class="landmarks" id="landmarks">
+            <div class="landmarks" id="landmarks-display">
               <!-- <div>landmark 1</div>
               <div>landmark 2</div>
               <div>landmark 3</div>
@@ -73,9 +79,9 @@
             <hr />
             <h3>
                - Restaurants -
-              <button type="button" class="btn btn-lg btn-primary">Add Restaurant</button>
+              <button type="button" class="btn btn-info">Add Restaurant</button>
             </h3>
-            <div class="restaurants" id="restaurants">
+            <div class="restaurants" id="restaurants-display">
               <!-- <div>restaurant 1</div>
               <div>restaurant 2</div>
               <div>restaurant 3</div>
@@ -85,9 +91,9 @@
             <hr />
             <h3>
                - Comments -
-              <button type="button" class="btn btn-primary">Add Comment</button>
+              <button type="button" class="btn btn-info">Add Comment</button>
             </h3>
-            <div class="comments" id="comments">
+            <div class="comments" id="comments-display">
               <!-- <div>comment 1</div>
               <div>comment 2</div>
               <div>comment 3</div>
