@@ -138,6 +138,15 @@ const updateLandmarksDisplay = function () {
   const newLandmarks = landmarksTemplate({landmarks: store.location.landmarks})
   landmarksElement.html('')
   landmarksElement.append(newLandmarks)
+  $('.removelandmark-button').on('click', (event) => {
+    console.log('remove landmark click!')
+    const name = $(event.delegateTarget).parent().data('name')
+    console.log('Name:', name)
+    api.removeLandmark(name)
+      .then(removeLandmarkSuccess)
+      .then(() => removeLandmarkFromStore(name))
+      .catch(failure)
+  })
 }
 
 // restaurants Display
@@ -185,6 +194,19 @@ const removeActivityFromStore = function (name) {
   console.log('Index:', index)
   store.location.activities.splice(index, 1)
   updateActivityDisplay()
+}
+
+const removeLandmarkSuccess = function (response) {
+  console.log('removeLandmarkSuccess')
+  console.log(response)
+}
+
+const removeLandmarkFromStore = function (name) {
+  console.log('removeLandmarkFromStore')
+  const index = store.location.landmarks.indexOf(name.toString())
+  console.log('Index:', index)
+  store.location.landmarks.splice(index, 1)
+  updateLandmarksDisplay()
 }
 
 // Add activity to local store

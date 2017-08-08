@@ -99,6 +99,17 @@ const removeActivity = (name) => {
   })
 }
 
+const removeLandmark = (name) => {
+  return $.ajax({
+    url: config.apiOrigin + '/landmarks/' + store.location.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: { landmark: {name} }
+  })
+}
+
 module.exports = {
   getLocations,
   getOneLocation,
@@ -107,6 +118,7 @@ module.exports = {
   addActivity,
   removeActivity,
   addLandmark,
+  removeLandmark,
   addRestaurant,
   addComment
 }
