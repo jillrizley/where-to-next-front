@@ -120,9 +120,15 @@ const updateActivityDisplay = function () {
   const newActivities = activitiesTemplate({activities: store.location.activities})
   activitiesElement.html('')
   activitiesElement.append(newActivities)
-  // $('.removeactivity-button').on('click', (event) => {
-  //   REMOVE ACTIVITY SKREEE
-  // })
+  $('.removeactivity-button').on('click', (event) => {
+    console.log('remove activity click!')
+    const name = $(event.delegateTarget).parent().data('name')
+    console.log('Name:', name)
+    api.removeActivity(name)
+      .then(removeActivitySuccess)
+      .then(() => removeActivityFromStore(name))
+      .catch(failure)
+  })
 }
 
 // landmarks Display
@@ -166,6 +172,19 @@ const updateLocationDisplay = function () {
 const addActivitySuccess = function (response) {
   console.log('addActivitySuccess')
   console.log(response)
+}
+
+const removeActivitySuccess = function (response) {
+  console.log('removeActivitySuccess')
+  console.log(response)
+}
+
+const removeActivityFromStore = function (name) {
+  console.log('removeActivityFromStore')
+  const index = store.location.activities.indexOf(name.toString())
+  console.log('Index:', index)
+  store.location.activities.splice(index, 1)
+  updateActivityDisplay()
 }
 
 // Add activity to local store

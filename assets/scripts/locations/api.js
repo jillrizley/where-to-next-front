@@ -88,12 +88,24 @@ const addComment = (name) => {
   })
 }
 
+const removeActivity = (name) => {
+  return $.ajax({
+    url: config.apiOrigin + '/activities/' + store.location.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: { activity: {name} }
+  })
+}
+
 module.exports = {
   getLocations,
   getOneLocation,
   addLocation,
   removeLocation,
   addActivity,
+  removeActivity,
   addLandmark,
   addRestaurant,
   addComment
