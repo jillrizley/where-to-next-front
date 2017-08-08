@@ -15,6 +15,8 @@ const commentsElement = $('#comments-display')
 const locationsTemplate = require('../templates/locations.handlebars')
 const activitiesTemplate = require('../templates/activities.handlebars')
 const landmarksTemplate = require('../templates/landmarks.handlebars')
+const restaurantsTemplate = require('../templates/restaurants.handlebars')
+const commentsTemplate = require('../templates/comments.handlebars')
 
 const getLocationsSuccess = function (response) {
   console.log('getLocationsSuccess')
@@ -90,12 +92,32 @@ const updateLandmarksDisplay = function () {
   landmarksElement.append(newLandmarks)
 }
 
+// restaurants Display
+const updateRestaurantsDisplay = function () {
+  console.log('updateRestaurantsDisplay')
+  console.log(store.location.food)
+  const newRestaurants = restaurantsTemplate({restaurants: store.location.food})
+  restaurantsElement.html('')
+  restaurantsElement.append(newRestaurants)
+}
+
+// comments Display
+const updateCommentsDisplay = function () {
+  console.log('updateCommentsDisplay')
+  console.log(store.location.comments)
+  const newComments = commentsTemplate({comments: store.location.comments})
+  commentsElement.html('')
+  commentsElement.append(newComments)
+}
+
 // Update display of location with the information in the store
 const updateLocationDisplay = function () {
   console.log('updateLocationDisplay')
   locationTitleElement.text(store.location.name)
   updateActivityDisplay()
   updateLandmarksDisplay()
+  updateRestaurantsDisplay()
+  updateCommentsDisplay()
 }
 
 const failure = function (response) {
