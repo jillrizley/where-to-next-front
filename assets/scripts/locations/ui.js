@@ -36,6 +36,19 @@ const addLocationSuccess = function (response) {
   console.log('addLocationSuccess')
   console.log(response)
   storeOneLocation(response)
+  if (store.locations) {
+    store.locations.push({
+      name: response.location.name,
+      id: response.location.id
+    })
+  } else {
+    store.locations = [{
+      name: response.location.name,
+      id: response.location.id
+    }]
+  }
+  console.log('store.locations: ', store.locations)
+  updateLocations()
   updateLocationDisplay()
 }
 
@@ -77,7 +90,7 @@ const storeOneLocation = function (response) {
 // Update activities display with the activities in the store
 const updateActivityDisplay = function () {
   console.log('updateActivityDisplay')
-  console.log(store.location.activities)
+  // console.log(store.location.activities)
   const newActivities = activitiesTemplate({activities: store.location.activities})
   activitiesElement.html('')
   activitiesElement.append(newActivities)
@@ -86,7 +99,7 @@ const updateActivityDisplay = function () {
 // landmarks Display
 const updateLandmarksDisplay = function () {
   console.log('updateLandmarksDisplay')
-  console.log(store.location.landmarks)
+  // console.log(store.location.landmarks)
   const newLandmarks = landmarksTemplate({landmarks: store.location.landmarks})
   landmarksElement.html('')
   landmarksElement.append(newLandmarks)
@@ -95,7 +108,7 @@ const updateLandmarksDisplay = function () {
 // restaurants Display
 const updateRestaurantsDisplay = function () {
   console.log('updateRestaurantsDisplay')
-  console.log(store.location.food)
+  // console.log(store.location.food)
   const newRestaurants = restaurantsTemplate({restaurants: store.location.food})
   restaurantsElement.html('')
   restaurantsElement.append(newRestaurants)
@@ -104,7 +117,7 @@ const updateRestaurantsDisplay = function () {
 // comments Display
 const updateCommentsDisplay = function () {
   console.log('updateCommentsDisplay')
-  console.log(store.location.comments)
+  // console.log(store.location.comments)
   const newComments = commentsTemplate({comments: store.location.comments})
   commentsElement.html('')
   commentsElement.append(newComments)
@@ -120,6 +133,58 @@ const updateLocationDisplay = function () {
   updateCommentsDisplay()
 }
 
+// Success message for new activity
+const addActivitySuccess = function (response) {
+  console.log('addActivitySuccess')
+  console.log(response)
+}
+
+// Add activity to local store
+const storeOneActivity = function (name) {
+  console.log('storeOneActivity')
+  store.location.activities.push(name)
+  updateActivityDisplay()
+}
+
+// Success message for new landmark
+const addLandmarkSuccess = function (response) {
+  console.log('addLandmarkSuccess')
+  console.log(response)
+}
+
+// Add landmark to local store
+const storeOneLandmark = function (name) {
+  console.log('storeOneLandmark')
+  store.location.landmarks.push(name)
+  updateLandmarksDisplay()
+}
+
+// Success message for new restaurant
+const addRestaurantSuccess = function (response) {
+  console.log('addRestaurantSuccess')
+  console.log(response)
+}
+
+// Add restaurant to local store
+const storeOneRestaurant = function (name) {
+  console.log('storeOneRestaurant')
+  store.location.restaurants.push(name)
+  updateRestaurantsDisplay()
+}
+
+// Success message for new comment
+const addCommentSuccess = function (response) {
+  console.log('addCommentSuccess')
+  console.log(response)
+}
+
+// Add comment to local store
+const storeOneComment = function (name) {
+  console.log('storeOneComment')
+  store.location.restaurants.push(name)
+  updateCommentsDisplay()
+}
+
 const failure = function (response) {
   console.log('There was an error!')
   console.log(response)
@@ -127,5 +192,14 @@ const failure = function (response) {
 
 module.exports = {
   getLocationsSuccess,
-  addLocationSuccess
+  addLocationSuccess,
+  addActivitySuccess,
+  storeOneActivity,
+  addLandmarkSuccess,
+  storeOneLandmark,
+  addRestaurantSuccess,
+  storeOneRestaurant,
+  addCommentSuccess,
+  storeOneComment,
+  failure
 }
