@@ -34,6 +34,16 @@ const addLocation = (name) => {
   })
 }
 
+const removeLocation = () => {
+  return $.ajax({
+    url: config.apiOrigin + '/locations/' + store.location.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const addActivity = (name) => {
   return $.ajax({
     url: config.apiOrigin + '/activities/' + store.location.id,
@@ -82,6 +92,7 @@ module.exports = {
   getLocations,
   getOneLocation,
   addLocation,
+  removeLocation,
   addActivity,
   addLandmark,
   addRestaurant,

@@ -87,12 +87,25 @@ const onAddComment = function (event) {
   }
 }
 
+const onRemoveLocation = function (event) {
+  console.log('onRemoveLocation')
+  event.preventDefault()
+  if (store.location) {
+    api.removeLocation()
+      .then(ui.removeLocationSuccess)
+      .catch(ui.failure)
+  } else {
+    console.log('No location is selected!')
+  }
+}
+
 const addHandlers = () => {
   $('.img-wrap').on('click', onAddLocation)
   $('#-addactivity-modal-form').on('submit', onAddActivity)
   $('#-addlandmark-modal-form').on('submit', onAddLandmark)
   $('#-addrestaurant-modal-form').on('submit', onAddRestaurant)
   $('#-addcomment-modal-form').on('submit', onAddComment)
+  $('#removelocation-confirm').on('click', onRemoveLocation)
 }
 
 module.exports = {

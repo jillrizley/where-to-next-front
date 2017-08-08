@@ -3,20 +3,29 @@
 const store = require('../store')
 const api = require('./api')
 
-// Select the display elements for later use
-const locationTitleElement = $('#location-title')
-const locationsElement = $('#locations-dropdown')
-const activitiesElement = $('#activities-display')
-const landmarksElement = $('#landmarks-display')
-const restaurantsElement = $('#restaurants-display')
-const commentsElement = $('#comments-display')
-
 // Load templates into variables
 const locationsTemplate = require('../templates/locations.handlebars')
 const activitiesTemplate = require('../templates/activities.handlebars')
 const landmarksTemplate = require('../templates/landmarks.handlebars')
 const restaurantsTemplate = require('../templates/restaurants.handlebars')
 const commentsTemplate = require('../templates/comments.handlebars')
+
+// Select the display elements for later use
+const locationTitleElement = $('#location-title')
+const locationsElement = $('#locations-dropdown')
+const locationDisplayElement = $('#location-display')
+const activitiesElement = $('#activities-display')
+const landmarksElement = $('#landmarks-display')
+const restaurantsElement = $('#restaurants-display')
+const commentsElement = $('#comments-display')
+
+const hideLocationDisplay = () => {
+  locationDisplayElement.addClass('hidden')
+}
+
+const showLocationDisplay = () => {
+  locationDisplayElement.removeClass('hidden')
+}
 
 const getLocationsSuccess = function (response) {
   console.log('getLocationsSuccess')
@@ -30,6 +39,7 @@ const getOneLocationSuccess = function (response) {
   console.log(response)
   storeOneLocation(response)
   updateLocationDisplay()
+  showLocationDisplay()
 }
 
 const addLocationSuccess = function (response) {
@@ -50,6 +60,22 @@ const addLocationSuccess = function (response) {
   console.log('store.locations: ', store.locations)
   updateLocations()
   updateLocationDisplay()
+  showLocationDisplay()
+}
+
+const removeLocationSuccess = function (response) {
+  console.log('removeLocationSuccess')
+  console.log(response)
+  store.locations = store.locations.filter((loc) => {
+    return loc.id !== store.location.id
+  })
+  updateLocations()
+  clearLocation()
+  hideLocationDisplay()
+}
+
+const clearLocation = function () {
+  store.location = undefined
 }
 
 // Store location names for later use
@@ -94,6 +120,9 @@ const updateActivityDisplay = function () {
   const newActivities = activitiesTemplate({activities: store.location.activities})
   activitiesElement.html('')
   activitiesElement.append(newActivities)
+  // $('.removeactivity-button').on('click', (event) => {
+  //   REMOVE ACTIVITY SKREEE
+  // })
 }
 
 // landmarks Display
@@ -193,6 +222,7 @@ const failure = function (response) {
 module.exports = {
   getLocationsSuccess,
   addLocationSuccess,
+  removeLocationSuccess,
   addActivitySuccess,
   storeOneActivity,
   addLandmarkSuccess,
