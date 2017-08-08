@@ -2,7 +2,9 @@
 
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
+const locationsApi = require('../locations/api')
 const ui = require('./ui')
+const locationsUi = require('../locations/ui')
 
 // prevents page from refreshing and calls a function from ./api
 // the function it calls from ./api sends an ajax request to sign a new user up
@@ -23,7 +25,9 @@ const onSignIn = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   api.signIn(data)
-    .done(ui.signInSuccess)
+    .then(ui.signInSuccess)
+    .then(() => locationsApi.getLocations())
+    .then(locationsUi.getLocationsSuccess)
     .catch(ui.failure)
 }
 
