@@ -1,5 +1,6 @@
 {{#each restaurants}}
-<div>
+<div data-name="{{this}}">
   {{this}}
+  <button type="button" class="removerestaurant-button btn btn-danger">X</button>
 </div>
 {{/each}}
