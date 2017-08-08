@@ -13,6 +13,16 @@ const getLocations = () => {
   })
 }
 
+const getOneLocation = (id) => {
+  return $.ajax({
+    url: config.apiOrigin + '/locations/' + id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const addLocation = (name) => {
   return $.ajax({
     url: config.apiOrigin + '/locations',
@@ -26,5 +36,6 @@ const addLocation = (name) => {
 
 module.exports = {
   getLocations,
+  getOneLocation,
   addLocation
 }
