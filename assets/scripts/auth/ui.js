@@ -20,6 +20,7 @@ const signInSuccess = (response) => {
   $('#-signup-button').addClass('hidden')
   $('#-logout-button').removeClass('hidden')
   $('#-changepwd-button').removeClass('hidden')
+  $('#locations-dropdown-button').removeClass('hidden')
 }
 
 const signInError = (response) => {
@@ -31,6 +32,7 @@ const signOutSuccess = (response) => {
   $('#-signup-button').removeClass('hidden')
   $('#-logout-button').addClass('hidden')
   $('#-changepwd-button').addClass('hidden')
+  $('#locations-dropdown-button').addClass('hidden')
   forceSignIn()
 }
 
