@@ -14,6 +14,7 @@ const commentsElement = $('#comments-display')
 // Load templates into variables
 const locationsTemplate = require('../templates/locations.handlebars')
 const activitiesTemplate = require('../templates/activities.handlebars')
+const landmarksTemplate = require('../templates/landmarks.handlebars')
 
 const getLocationsSuccess = function (response) {
   console.log('getLocationsSuccess')
@@ -80,11 +81,21 @@ const updateActivityDisplay = function () {
   activitiesElement.append(newActivities)
 }
 
+// landmarks Display
+const updateLandmarksDisplay = function () {
+  console.log('updateLandmarksDisplay')
+  console.log(store.location.landmarks)
+  const newLandmarks = landmarksTemplate({landmarks: store.location.landmarks})
+  landmarksElement.html('')
+  landmarksElement.append(newLandmarks)
+}
+
 // Update display of location with the information in the store
 const updateLocationDisplay = function () {
   console.log('updateLocationDisplay')
   locationTitleElement.text(store.location.name)
   updateActivityDisplay()
+  updateLandmarksDisplay()
 }
 
 const failure = function (response) {
