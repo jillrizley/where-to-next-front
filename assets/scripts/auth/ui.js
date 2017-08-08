@@ -29,10 +29,13 @@ const signInError = (response) => {
 const signOutSuccess = (response) => {
   console.log('signOutSuccess')
   store.user = undefined
+  store.location = undefined
+  store.locations = undefined
   $('#-signup-button').removeClass('hidden')
   $('#-logout-button').addClass('hidden')
   $('#-changepwd-button').addClass('hidden')
   $('#locations-dropdown-button').addClass('hidden')
+  $('#location-display').addClass('hidden')
   forceSignIn()
 }
 
