@@ -58,12 +58,12 @@ const addLandmark = (name) => {
 
 const addRestaurant = (name) => {
   return $.ajax({
-    url: config.apiOrigin + '/foods/' + store.location.id,
+    url: config.apiOrigin + '/food/' + store.location.id,
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: { restaurant: {name} }
+    data: { food: {name} }
   })
 }
 

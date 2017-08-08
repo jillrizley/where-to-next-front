@@ -168,7 +168,7 @@ const addRestaurantSuccess = function (response) {
 // Add restaurant to local store
 const storeOneRestaurant = function (name) {
   console.log('storeOneRestaurant')
-  store.location.restaurants.push(name)
+  store.location.food.push(name)
   updateRestaurantsDisplay()
 }
 
@@ -181,7 +181,7 @@ const addCommentSuccess = function (response) {
 // Add comment to local store
 const storeOneComment = function (name) {
   console.log('storeOneComment')
-  store.location.restaurants.push(name)
+  store.location.comments.push(name)
   updateCommentsDisplay()
 }
 
