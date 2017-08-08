@@ -49,7 +49,7 @@
         </nav>
         <!-- NAVBAR END -->
         <!-- Location info area -->
-        <div id="location-display" class="row location-display">
+        <div id="location-display" class="row location-display hidden">
           <div class="col-lg-4 col-lg-offset-1">
             <h1 id="location-title" class="text-center">Location Name</h1>
             <hr />
@@ -57,49 +57,27 @@
                - Activities -
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#-addactivity-modal">Add Activity</button>
             </h3>
-            <div class="activities" id="activities-display">
-              <!-- <div>activity 1</div>
-              <div>activity 2</div>
-              <div>activity 3</div>
-              <div>activity 4</div>
-              <div>activity 5</div> -->
-            </div>
+            <div class="activities" id="activities-display"></div>
             <hr />
             <h3>
                - Landmarks -
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#-addlandmark-modal">Add Landmark</button>
             </h3>
-            <div class="landmarks" id="landmarks-display">
-              <!-- <div>landmark 1</div>
-              <div>landmark 2</div>
-              <div>landmark 3</div>
-              <div>landmark 4</div>
-              <div>landmark 5</div> -->
-            </div>
+            <div class="landmarks" id="landmarks-display"></div>
             <hr />
             <h3>
                - Restaurants -
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#-addrestaurant-modal">Add Restaurant</button>
             </h3>
-            <div class="restaurants" id="restaurants-display">
-              <!-- <div>restaurant 1</div>
-              <div>restaurant 2</div>
-              <div>restaurant 3</div>
-              <div>restaurant 4</div>
-              <div>restaurant 5</div> -->
-            </div>
+            <div class="restaurants" id="restaurants-display"></div>
             <hr />
             <h3>
                - Comments -
               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#-addcomment-modal">Add Comment</button>
             </h3>
-            <div class="comments" id="comments-display">
-              <!-- <div>comment 1</div>
-              <div>comment 2</div>
-              <div>comment 3</div>
-              <div>comment 4</div>
-              <div>comment 5</div> -->
-            </div>
+            <div class="comments" id="comments-display"></div>
+            <hr />
+            <button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#-removelocation-modal">I don't actually want to visit here</button>
           </div>
           <div class="col-lg-6">
             <img class="img img-rounded" src="images/placeimg_640_480_any.jpg" alt="Overhead Map">
@@ -239,13 +217,13 @@
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="-signin-modal-email">Username</label>
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="-signin-modal-email" placeholder="Username" name="credentials[email]" value=""/>
+                        <input type="text" class="form-control" id="-signin-modal-email" placeholder="Username" name="credentials[email]" value="a"/>
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="col-sm-2 control-label" for="-signin-modal-pwd">Password</label>
                       <div class="col-sm-10">
-                        <input type="password" class="form-control" id="-signin-modal-pwd" placeholder="Password" name="credentials[password]" value=""/>
+                        <input type="password" class="form-control" id="-signin-modal-pwd" placeholder="Password" name="credentials[password]" value="a"/>
                       </div>
                     </div>
                     <div class="form-group">
@@ -469,5 +447,36 @@
             </div>
           </div>
           <!-- End add comment modal -->
+          <!-- Remove location modal -->
+          <div class="modal fade" id="-removelocation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span>
+                     <span class="sr-only">Close</span>
+                  </button>
+                  <h4 class="modal-title" id="-removelocation-modal-title">
+                      Are you sure you want to remove this location?
+                  </h4>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                  <form class="form-horizontal" id="-removelocation-modal-form" role="removelocation-form">
+                    <div class="form-group">
+                      <div class="col-sm-5">
+                        <button id="removelocation-confirm" type="button" class="btn btn-lg btn-block btn-success">Yes I'm sure</button>
+                      </div>
+                      <div class="col-sm-5 col-sm-offset-2">
+                        <button type="button" class="btn btn-lg btn-block btn-danger" data-dismiss="modal">No! Never mind!</button>
+                    </div>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End remove location modal -->
     </body>
 </html>
