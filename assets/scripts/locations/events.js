@@ -18,12 +18,20 @@ const onAddLocation = function (event) {
   event.preventDefault()
   const name = $(event.delegateTarget).children('p').text()
   console.log(name)
-  if (store.user) {
-    api.addLocation(name)
-      .then(ui.addLocationSuccess)
+  if (store.locations && store.locations.includes(name)) {
+    const index = store.locations.indexOf(name)
+    const id = store.locations[index].id
+    api.getOneLocation(id)
+      .then(ui.getOneLocationSuccess)
       .catch(ui.failure)
   } else {
-    console.log('You must sign in!')
+    if (store.user) {
+      api.addLocation(name)
+        .then(ui.addLocationSuccess)
+        .catch(ui.failure)
+    } else {
+      console.log('You must sign in!')
+    }
   }
 }
 
