@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Where To Next?</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa|" rel="stylesheet">
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+      <h1></h1>
+
+      <!-- NAVBAR START -->
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#-main-navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <span class="navbar-brand" href="#">Where To Next?</span>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="-main-navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" data-toggle="modal" data-target="#-signup-modal" id="-signup-button">Login or Signup</a></li>
+                <li class="dropdown">
+                <a id="locations-dropdown-button" href="#" class="dropdown-toggle hidden" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Locations<span class="caret"></span></a>
+                <ul id="locations-dropdown" class="dropdown-menu">
+                  <li class="dropdown-header">No locations yet!</li>
+                </ul>
+              </li>
+                <li><a class="hidden" id="-logout-button" href="#">Logout</a></li>
+                <li><a class="hidden" id="-changepwd-button" href="#" data-toggle="modal" data-target="#-changepwd-modal">Change Password</a></li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+        <!-- NAVBAR END -->
+        <!-- Location info area -->
+        <div id="location-display" class="row location-display hidden">
+          <div class="col-lg-4 col-lg-offset-1">
+            <h1 id="location-title" class="text-center">Location Name</h1>
+            <hr />
+            <h3>
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#-addactivity-modal">Add Activity</button>
+            </h3>
+            <div class="activities" id="activities-display"></div>
+            <hr />
+            <h3>
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#-addlandmark-modal">Add Landmark</button>
+            </h3>
+            <div class="landmarks" id="landmarks-display"></div>
+            <hr />
+            <h3>
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#-addrestaurant-modal">Add Restaurant</button>
+            </h3>
+            <div class="restaurants" id="restaurants-display"></div>
+            <hr />
+            <h3>
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#-addcomment-modal">Add Comment</button>
+            </h3>
+            <div class="comments" id="comments-display"></div>
+            <hr />
+            <h2>
+            <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#-removelocation-modal">I don't want to go here anymore</button>
+          </h2>
+          </div>
+          <div class="col-lg-6">
+<!-- GOOGLEMAPSAPI-->
+<h4 class="text-center">Use the map below to find activities, landmarks, and restaurants in your destination city </h4>
+            <div id="map"></div>
+<!-- GOOGLEMAPSAPI-->
+          </div>
+        </div>
+        <!-- END Location info area -->
+        <!-- Locations header -->
+        <div class="row">
+          <div class="col-lg-12">
+          </div>
+        </div>
+        <!-- END Locations header -->
+    </br>
+    </br>
+        <!-- Location Gallery -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <h4 id="welcome-header" class="text-center">Welcome to Where To Next? - Please sign in to continue.</h4>
+              <h4 id="signedin-header" class="text-center hidden">Welcome to Where To Next - your online destination bucket list<br/>Choose from an image below to add a destination city</h4>
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/6moouzszc4nnx1w/london.jpg?dl=0" alt="">
+                <p class="img-description">London</p>
+              </div>
+              <!-- Honolulu -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/vmavin79txnyavj/honolulusurfing.jpg?dl=0" alt="">
+                <p class="img-description">Honolulu</p>
+              </div>
+              <!-- Madrid -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/1zqlwe1qbtbt36r/madrid.jpg?dl=0" alt="">
+                <p class="img-description">Madrid</p>
+              </div>
+              <!-- Rio de Janerio -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/rv95auf04xzzkx2/rio.jpg?dl=0" alt="">
+                <p class="img-description">Rio de Janerio</p>
+              </div>
+              <!-- Berlin -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/r2r22pmrlvt4zgs/berlin.jpg?dl=0" alt="">
+                <p class="img-description">Berlin</p>
+              </div>
+              <!-- Beijing -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/lkuxmc4tsspp41m/beijing.jpg?dl=0" alt="">
+                <p class="img-description">Beijing</p>
+              </div>
+              <!-- Moscow -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/946qzo9uas7apga/moscow.jpg?dl=0" alt="">
+                <p class="img-description">Moscow</p>
+              </div>
+              <!-- Los Angeles -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/ks9awt1d3qld0tw/la1.jpg?dl=0" alt="">
+                <p class="img-description">Los Angeles</p>
+              </div>
+              <!-- Cairo -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/19n7q1zk99cre48/cairo.jpg?dl=0" alt="">
+                <p class="img-description">Cairo</p>
+              </div>
+              <!-- Sydney -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/dmtx3onom03ml9f/sydney.jpg?dl=0" alt="">
+                <p class="img-description">Sydney</p>
+              </div>
+              <!-- New York City -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/fnp0ipv5g9vh2v4/nyc.jpg?dl=0" alt="">
+                <p class="img-description">NYC</p>
+              </div>
+              <!-- Las Vegas -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/wbzpvv7gw6i97at/lasvegas1.jpeg?dl=0" alt="">
+                <p class="img-description">Las Vegas</p>
+              </div>
+              <!-- Boston -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://www.dl.dropboxusercontent.com/s/fuflp9qx3w3dd5u/boston1.jpg?dl=0" alt="">
+                <p class="img-description">Boston</p>
+              </div>
+              <!-- Tokyo -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/hmltyph4u11mrj0/tokyo.jpg?dl=0" alt="">
+                <p class="img-description">Tokyo</p>
+              </div>
+              <!-- Austin -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/fac0n33a6a4od8u/austin.jpg?dl=0" alt="">
+                <p class="img-description">Austin</p>
+              </div>
+              <!-- Milan -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/srdl0b4qhwtizs3/milan.jpg?dl=0" alt="">
+                <p class="img-description">Milan</p>
+              </div>
+              <!-- Paris -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://dl.dropboxusercontent.com/s/jz3b837g66aai41/paris.jpg?dl=0" alt="">
+                <p class="img-description">Paris</p>
+              </div>
+              <!-- Quebec -->
+              <div class="img-wrap">
+                <img class="img-img" src="https://www.dl.dropboxusercontent.com/s/mmafh8l25sw5fk8/quebec.jpg?dl=0" alt="">
+                <p class="img-description">Quebec</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Location Gallery -->
+        <!-- ============================= -->
+        <!-- MODALS ONLY BEYOND THIS POINT -->
+        <!-- ============================= -->
+        <!-- Sign up / log in modal -->
+          <div class="modal fade" id="-signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Sign in header-->
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span>
+                     <span class="sr-only">Close</span>
+                  </button>
+                  <h4 class="modal-title" id="-signin-modal-title">
+                      Log in
+                  </h4>
+                  <h5 class="modal-title modal-error hidden" id="sign-in-error">An error has occured!</h5>
+                </div>
+                <!-- Sign in Body -->
+                <div class="modal-body">
+                  <form class="form-horizontal" id="-signin-modal-form" role="signup-form">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="-signin-modal-email">Username</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="-signin-modal-email" placeholder="Username" name="credentials[email]" value=""/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="-signin-modal-pwd">Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="-signin-modal-pwd" placeholder="Password" name="credentials[password]" value=""/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Log in</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!-- Sign up Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-signup-modal-title">
+                      Sign up
+                  </h4>
+                  <h5 class="modal-title modal-error hidden" id="sign-up-error">An error has occured!</h5>
+                </div>
+                <!-- Sign up Body -->
+                <div class="modal-body">
+                  <form class="form-horizontal" id="-signup-modal-form" role="signup-form">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="-signup-modal-email">Username</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="-signup-modal-email" placeholder="Username" name="credentials[email]"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="-signup-modal-pwd">Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="-signup-modal-pwd" placeholder="Password" name="credentials[password]" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Sign up</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End sign up modal -->
+          <!-- Change password modal -->
+          <div class="modal fade" id="-changepwd-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span>
+                     <span class="sr-only">Close</span>
+                  </button>
+                  <h4 class="modal-title" id="-changepwd-modal-title">
+                      Change password
+                  </h4>
+                  <h5 class="modal-title modal-error hidden" id="changepwd-error">An error has occured!</h5>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                  <form class="form-horizontal" id="-changepwd-modal-form" role="signup-form">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="-changepwd-modal-email">Old</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="-changepwd-modal-email" placeholder="Old Password" name="passwords[old]"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="-changepwd-modal-pwd">New</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="-changepwd-modal-pwd" placeholder="New Password" name="passwords[new]" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Change</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End change password modal -->
+          <!-- Add activity modal -->
+          <div class="modal fade" id="-addactivity-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span>
+                     <span class="sr-only">Close</span>
+                  </button>
+                  <h4 class="modal-title" id="-addactivity-modal-title">
+                  </h4>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                  <form class="form-horizontal" id="-addactivity-modal-form" role="signup-form">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="-addactivity-modal-name">Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="-addactivity-modal-name" placeholder="Name of activity" name="activity[name]"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Add</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End add activity modal -->
+          <!-- Add landmark modal -->
+          <div class="modal fade" id="-addlandmark-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span>
+                     <span class="sr-only">Close</span>
+                  </button>
+                  <h4 class="modal-title" id="-addlandmark-modal-title">
+                      Add landmark
+                  </h4>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                  <form class="form-horizontal" id="-addlandmark-modal-form" role="signup-form">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="-addlandmark-modal-name">Landmark</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="-addlandmark-modal-name" placeholder="Landmark" name="landmark[name]"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Add</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End add landmark modal -->
+          <!-- Add restaurant modal -->
+          <div class="modal fade" id="-addrestaurant-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span>
+                     <span class="sr-only">Close</span>
+                  </button>
+                  <h4 class="modal-title" id="-addrestaurant-modal-title">
+                      Add restaurant
+                  </h4>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                  <form class="form-horizontal" id="-addrestaurant-modal-form" role="signup-form">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="-addrestaurant-modal-name">Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="-addrestaurant-modal-name" placeholder="Name of restaurant" name="restaurant[name]"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Add</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End add restaurant modal -->
+          <!-- Add comment modal -->
+          <div class="modal fade" id="-addcomment-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span>
+                     <span class="sr-only">Close</span>
+                  </button>
+                  <h4 class="modal-title" id="-addcomment-modal-title">
+                      Add comment
+                  </h4>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                  <form class="form-horizontal" id="-addcomment-modal-form" role="signup-form">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="-addcomment-modal-name">Comment</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="-addcomment-modal-name" placeholder="Your comment" name="comment[name]"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Add</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End add comment modal -->
+          <!-- Remove location modal -->
+          <div class="modal fade" id="-removelocation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span>
+                     <span class="sr-only">Close</span>
+                  </button>
+                  <h4 class="modal-title" id="-removelocation-modal-title">
+                      Are you sure you want to remove this location?
+                  </h4>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                  <form class="form-horizontal" id="-removelocation-modal-form" role="removelocation-form">
+                    <div class="form-group">
+                      <div class="col-sm-5">
+                        <button id="removelocation-confirm" type="button" class="btn btn-lg btn-block btn-success">I'm sure!</button>
+                      </div>
+                      <div class="col-sm-5 col-sm-offset-2">
+                        <button type="button" class="btn btn-lg btn-block btn-danger" data-dismiss="modal">Nevermind!</button>
+                    </div>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End remove location modal -->
+    </body>
+</html>
