@@ -308,6 +308,7 @@ module.exports = {
   getLocationsSuccess,
   addLocationSuccess,
   removeLocationSuccess,
+  getOneLocationSuccess,
   addActivitySuccess,
   storeOneActivity,
   addLandmarkSuccess,
