@@ -4,7 +4,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .navbar-brand {
   font-family: 'Comfortaa', cursive;
-  font-size: 40px;
+  font-size: 65px;
   font-variant: small-caps;
 }
 
@@ -14,29 +14,19 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 .modal-body {
   font-family: 'Comfortaa';
-  font-variant: small-caps;
 }
 
-#-signup-button {
-  font-family: 'Comfortaa';
-  font-variant: small-caps;
+#map {
+  width: 100%;
+  height: 400px;
+  background-color: grey;
 }
 
-#-logout-button {
-  font-family: 'Comfortaa';
-  font-variant: small-caps;
-}
 
-#-changepwd-button {
-  font-family: 'Comfortaa';
-  font-variant: small-caps;
-}
-
-#locations-dropdown-button {
-  font-family: 'Comfortaa';
-  font-variant: small-caps;
-}
-
+#-signup-button,
+#-logout-button,
+#-changepwd-button,
+#locations-dropdown-button,
 #locations-dropdown {
   font-family: 'Comfortaa';
   font-variant: small-caps;
