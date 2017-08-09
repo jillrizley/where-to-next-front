@@ -1,4 +1,4 @@
-# Where To Next? :airplane:
+# Where To Next? :airplane: :palm_tree:
 
 ## What does it do?
 Where To Next is an online travel bucketlist. We provide a list of cities from around the world, and allow you, the user, to choose what activities, landmarks, and food you would visit on your dream trips! The site includes an enticing photo of the cities as well as maps, where the user can explore and create an amazing bucket list of adventures to go on.
