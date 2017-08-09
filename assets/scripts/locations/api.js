@@ -110,6 +110,28 @@ const removeLandmark = (name) => {
   })
 }
 
+const removeRestaurant = (name) => {
+  return $.ajax({
+    url: config.apiOrigin + '/food/' + store.location.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: { food: {name} }
+  })
+}
+
+const removeComment = (name) => {
+  return $.ajax({
+    url: config.apiOrigin + '/comments/' + store.location.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: { comment: {name} }
+  })
+}
+
 module.exports = {
   getLocations,
   getOneLocation,
@@ -120,5 +142,7 @@ module.exports = {
   addLandmark,
   removeLandmark,
   addRestaurant,
-  addComment
+  removeRestaurant,
+  addComment,
+  removeComment
 }
