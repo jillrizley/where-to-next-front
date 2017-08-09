@@ -120,6 +120,24 @@ const addHandlers = () => {
   $('#-addrestaurant-modal-form').on('submit', onAddRestaurant)
   $('#-addcomment-modal-form').on('submit', onAddComment)
   $('#removelocation-confirm').on('click', onRemoveLocation)
+  $('#-signup-modal').on('hidden.bs.modal', () => {
+    $('#-signup-modal input').val('')
+  })
+  $('#-changepwd-modal').on('hidden.bs.modal', () => {
+    $('#-changepwd-modal input').val('')
+  })
+  $('#-addactivity-modal').on('hidden.bs.modal', () => {
+    $('#-addactivity-modal input').val('')
+  })
+  $('#-addlandmark-modal').on('hidden.bs.modal', () => {
+    $('#-addlandmark-modal input').val('')
+  })
+  $('#-addrestaurant-modal').on('hidden.bs.modal', () => {
+    $('#-addrestaurant-modal input').val('')
+  })
+  $('#-addcomment-modal').on('hidden.bs.modal', () => {
+    $('#-addcomment-modal input').val('')
+  })
 }
 
 module.exports = {
