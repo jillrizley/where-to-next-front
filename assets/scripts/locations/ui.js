@@ -73,6 +73,7 @@ const removeLocationSuccess = function (response) {
   updateLocations()
   clearLocation()
   hideLocationDisplay()
+  $('#-removelocation-modal').modal('hide')
 }
 
 const clearLocation = function () {
