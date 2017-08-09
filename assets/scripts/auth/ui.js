@@ -56,6 +56,10 @@ const changePasswordSuccess = (response) => {
 }
 
 const changePasswordError = (response) => {
+  $('#changepwd-error').removeClass('hidden')
+  setTimeout(() => {
+    $('#changepwd-error').addClass('hidden')
+  }, 1500)
 }
 
 const forceSignIn = function () {

@@ -39,7 +39,7 @@ const onChangePassword = function (event) {
   event.preventDefault()
   api.changePassword(data)
     .done(ui.changePasswordSuccess)
-    .catch(ui.failure)
+    .catch(ui.changePasswordError)
 }
 
 // prevents page from refreshing and calls function from ./api
