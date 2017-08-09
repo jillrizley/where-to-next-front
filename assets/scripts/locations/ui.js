@@ -58,14 +58,23 @@ const centerMap = function () {
   if (index > -1) {
     map.setCenter(new google.maps.LatLng(coords[index].lat, coords[index].long))
   }
+  map.setZoom(12)
 }
 
-const getOneLocationSuccess = function (response) {
-  storeOneLocation(response)
+
+const locationSelected = function () {
   updateLocationDisplay()
   showLocationDisplay()
   $('html, body').animate({ scrollTop: 0 }, 'slow')
   centerMap()
+  $('#signedin-header').addClass('hidden')
+}
+
+const getOneLocationSuccess = function (response) {
+  console.log('getOneLocationSuccess')
+  console.log(response)
+  storeOneLocation(response)
+  locationSelected()
 }
 
 const addLocationSuccess = function (response) {
@@ -82,10 +91,7 @@ const addLocationSuccess = function (response) {
     }]
   }
   updateLocations()
-  updateLocationDisplay()
-  showLocationDisplay()
-  $('html, body').animate({ scrollTop: 0 }, 'slow')
-  centerMap()
+  locationSelected()
 }
 
 const removeLocationSuccess = function (response) {
@@ -96,6 +102,7 @@ const removeLocationSuccess = function (response) {
   clearLocation()
   hideLocationDisplay()
   $('#-removelocation-modal').modal('hide')
+  $('#signedin-header').removeClass('hidden')
 }
 
 const clearLocation = function () {

@@ -49,6 +49,15 @@ h5 {
   padding: 1px;
 }
 
+.list-item div {
+  width: 90%;
+  display: inline-block;
+}
+
+.list-item button {
+  width: 8%;
+}
+
 h1,
 h3 {
   font-family: 'Comfortaa';
@@ -93,13 +102,11 @@ hr {
   visibility: hidden;
 }
 
-//
 .img-wrap:hover .img-description {
   opacity: .75;
   visibility: visible;
-
 }
-//
+
 .img-wrap:hover {
   filter: sepia(75%);
 }
@@ -108,7 +115,6 @@ hr {
   border-radius: 30px;
   filter: blur(1.5px);
 }
-//
 
 .modal-error {
   color: #f00;
