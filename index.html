@@ -6,7 +6,7 @@
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-<link href="https://fonts.googleapis.com/css?family=Comfortaa|Economica|" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa|" rel="stylesheet">
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
@@ -79,8 +79,38 @@
             <hr />
             <button type="button" class="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#-removelocation-modal">I don't actually want to visit here</button>
           </div>
+<!-- GOOGLEMAPSAPIGOOGLEMAPSAPIGOOGLEMAPSAPIGOOGLEMAPSAPIGOOGLEMAPSAPIGOOGLEMAPSAPI -->
           <div class="col-lg-6">
-            <img class="img img-rounded" src="images/placeimg_640_480_any.jpg" alt="Overhead Map">
+          <style>
+  #map {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+  }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+   function initMap() {
+     var location = {lat: 42.3601, lng: -71.0589};
+     var map = new google.maps.Map(document.getElementById('map'), {
+       zoom: 12,
+       center: location
+     })
+     var marker = new google.maps.Marker({
+       position: location,
+       map: map
+     })
+   }
+ </script>
+ <script async defer
+ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgd164CNRCK3IZM0yQdU5-FhkEkGFRx_Y&callback=initMap">
+ </script>
+
+<!-- GOOGLEMAPSAPIGOOGLEMAPSAPIGOOGLEMAPSAPIGOOGLEMAPSAPIGOOGLEMAPSAPIGOOGLEMAPSAPIGOOGLEMAPSAPIGOOGLEMAPSAPI -->
+
+            <img class="img img-rounded" src="images/impossibly-cute-puppy-21.jpg" alt="Overhead Map">
           </div>
         </div>
         <!-- END Location info area -->
