@@ -32,100 +32,80 @@ mondule.exports=[
   },
 
   {
-    name: 'Rio ',
-    lat: 51.5074,
-    long: -0.1278
+    name: 'Rio de Janerio',
+    lat: -22.9068,
+    long: -43.1729
   },
 
   {
-    name: 'london',
-    lat: 51.5074,
-    long: -0.1278
+    name: 'Beijing',
+    lat: 39.9042,
+    long: 116.4074
   },
 
   {
-    name: 'london',
-    lat: 51.5074,
-    long: -0.1278
+    name: 'Los Angeles',
+    lat: 34.0522,
+    long: -118.2437
   },
 
   {
-    name: 'london',
-    lat: 51.5074,
-    long: -0.1278
+    name: 'Cairo',
+    lat: 30.0444,
+    long: 31.2357
   },
 
   {
-    name: 'london',
-    lat: 51.5074,
-    long: -0.1278
+    name: 'Sydney',
+    lat: -33.8688,
+    long: 151.2093
   },
 
   {
-    name: 'london',
-    lat: 51.5074,
-    long: -0.1278
+    name: 'Moscow',
+    lat: 55.7558,
+    long: 37.6173
   },
 
   {
-    name: 'london',
-    lat: 51.5074,
-    long: -0.1278
+    name: 'Boston',
+    lat: 42.3601,
+    long: -71.0589
   },
 
   {
-    name: 'london',
-    lat: 51.5074,
-    long: -0.1278
+    name: 'Tokyo',
+    lat: 35.6895,
+    long: 139.6917
   },
 
   {
-    name: 'london',
-    lat: 51.5074,
-    long: -0.1278
+    name: 'Austin',
+    lat: 30.2672,
+    long: -97.7431
   },
 
   {
-    name: 'london',
-    lat: 51.5074,
-    long: -0.1278
+    name: 'Milan',
+    lat: 45.4642,
+    long: 9.1900
   },
 
   {
-    name: 'london',
-    lat: 51.5074,
-    long: -0.1278
+    name: 'NYC',
+    lat: 40.7128,
+    long: -74.0059
   },
 
   {
-    name: 'london',
-    lat: 51.5074,
-    long: -0.1278
+    name: 'Paris',
+    lat: 48.8566,
+    long: 2.3522
   },
 
   {
-    name: 'london',
-    lat: 51.5074,
-    long: -0.1278
-  },
+    name: 'Quebec',
+    lat: 46.8139,
+    long: -71.2080
+  }
 ]
-
-
-Rio: 22.9068° S, 43.1729° W
-
-Beijing: 39.9042° N, 116.4074° E
-
-LA: 34.0522° N, 118.2437° W
-
-Cairo: 30.0444° N, 31.2357° E
-
-Sydney: 33.8688° S, 151.2093° E
-
-Moscow: 55.7558° N, 37.6173° E
-Boston: 42.3601° N, 71.0589° W
-Tokyo: 35.6895° N, 139.6917° E
-Austin: 30.2672° N, 97.7431° W
-Milan: 45.4642° N, 9.1900° E
-NYC: 40.7128° N, 74.0059° W
-Paris: 48.8566° N, 2.3522° E
-Montreal: 45.5017° N, 73.5673° W
