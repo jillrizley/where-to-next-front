@@ -1,8 +1,8 @@
 'use strict'
 
-mondule.exports=[
+module.exports = [
   {
-    name: 'london',
+    name: 'London',
     lat: 51.5074,
     long: -0.1278
   },

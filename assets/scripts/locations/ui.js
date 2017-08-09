@@ -2,6 +2,8 @@
 
 const store = require('../store')
 const api = require('./api')
+const googleMapsLoader = require('google-maps')
+const coords = require('../coordinates')
 
 // Load templates into variables
 const locationsTemplate = require('../templates/locations.handlebars')
@@ -27,11 +29,40 @@ const showLocationDisplay = () => {
   locationDisplayElement.removeClass('hidden')
 }
 
+let map = null
+let google = null
+googleMapsLoader.KEY = 'AIzaSyBgd164CNRCK3IZM0yQdU5-FhkEkGFRx_Y'
+googleMapsLoader.load((api) => {
+  google = api
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 12,
+    center: {lat: 0, lng: 0}
+  })
+})
+
+// const initMap = function () {
+//   map = new google.maps.Map(document.getElementById('map'), {
+//     zoom: 12,
+//     center: {lat: 0, lng: 0}
+//   })
+// }
+
 const getLocationsSuccess = function (response) {
   console.log('getLocationsSuccess')
   console.log(response)
   storeLocations(response)
   updateLocations(response)
+}
+
+const centerMap = function () {
+  console.log('Setting map')
+  google.maps.event.trigger(map, 'resize')
+  const index = coords.findIndex(loc => loc.name === store.location.name)
+  console.log('location index: ', index)
+  console.log('location coords: ', coords[index].lat, ',', coords[index].long)
+  if (index > -1) {
+    map.setCenter(new google.maps.LatLng(coords[index].lat, coords[index].long))
+  }
 }
 
 const getOneLocationSuccess = function (response) {
@@ -41,6 +72,7 @@ const getOneLocationSuccess = function (response) {
   updateLocationDisplay()
   showLocationDisplay()
   $('html, body').animate({ scrollTop: 0 }, 'slow')
+  centerMap()
 }
 
 const addLocationSuccess = function (response) {
@@ -62,6 +94,8 @@ const addLocationSuccess = function (response) {
   updateLocations()
   updateLocationDisplay()
   showLocationDisplay()
+  $('html, body').animate({ scrollTop: 0 }, 'slow')
+  centerMap()
 }
 
 const removeLocationSuccess = function (response) {
