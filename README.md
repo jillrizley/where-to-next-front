@@ -1,4 +1,14 @@
-# Where To Next? :airplane: :palm_tree:
+# :palm_tree: :airplane: Where To Next? :airplane: :palm_tree:
+
+### ERD: (https://wireframe.cc/zCdouD)
+
+### Wireframes:
+### [Landing Page](https://wireframe.cc/nxWe1b)
+### [Selected Location](https://wireframe.cc/rjNLqm)
+
+### Front End Deployed: https://git-me-baby-1-more-time.github.io/where-to-next-front/
+
+### Back End Repo: https://github.com/git-me-baby-1-more-time/where-to-next-api
 
 ## What does it do?
 Where To Next is an online travel bucketlist. We provide a list of cities from around the world, and allow you, the user, to choose what activities, landmarks, and food you would visit on your dream trips! The site includes an enticing photo of the cities as well as maps, where the user can explore and create an amazing bucket list of adventures to go on.
@@ -29,13 +39,3 @@ Adding the Google Maps API was the most difficult part of our project, however, 
 * I can add comments on said location
 * I can remove an activity, landmark, restaurant, or comment from my bucket list
 * I can remove a location from my bucket list
-
-## ERD: (https://wireframe.cc/zCdouD)
-
-## Wireframes:
-[Landing Page](https://wireframe.cc/nxWe1b)
-[Selected Location](https://wireframe.cc/rjNLqm)
-
-## Front End Repo: https://git-me-baby-1-more-time.github.io/where-to-next-front/
-
-## Back End Repo: https://github.com/git-me-baby-1-more-time/where-to-next-api
