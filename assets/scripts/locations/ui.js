@@ -201,6 +201,7 @@ const updateLocationDisplay = function () {
 const addActivitySuccess = function (response) {
   console.log('addActivitySuccess')
   console.log(response)
+  $('#-addactivity-modal').modal('hide')
 }
 
 const removeActivitySuccess = function (response) {
@@ -266,6 +267,7 @@ const storeOneActivity = function (name) {
 const addLandmarkSuccess = function (response) {
   console.log('addLandmarkSuccess')
   console.log(response)
+  $('#-addlandmark-modal').modal('hide')
 }
 
 // Add landmark to local store
@@ -279,6 +281,7 @@ const storeOneLandmark = function (name) {
 const addRestaurantSuccess = function (response) {
   console.log('addRestaurantSuccess')
   console.log(response)
+  $('#-addrestaurant-modal').modal('hide')
 }
 
 // Add restaurant to local store
@@ -292,6 +295,7 @@ const storeOneRestaurant = function (name) {
 const addCommentSuccess = function (response) {
   console.log('addCommentSuccess')
   console.log(response)
+  $('#-addcomment-modal').modal('hide')
 }
 
 // Add comment to local store
