@@ -71,8 +71,6 @@ const locationSelected = function () {
 }
 
 const getOneLocationSuccess = function (response) {
-  console.log('getOneLocationSuccess')
-  console.log(response)
   storeOneLocation(response)
   locationSelected()
 }
