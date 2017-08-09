@@ -48,23 +48,19 @@ googleMapsLoader.load((api) => {
 // }
 
 const getLocationsSuccess = function (response) {
-  console.log('getLocationsSuccess')
-  console.log(response)
   storeLocations(response)
   updateLocations(response)
 }
 
 const centerMap = function () {
-  console.log('Setting map')
   google.maps.event.trigger(map, 'resize')
   const index = coords.findIndex(loc => loc.name === store.location.name)
-  console.log('location index: ', index)
-  console.log('location coords: ', coords[index].lat, ',', coords[index].long)
   if (index > -1) {
     map.setCenter(new google.maps.LatLng(coords[index].lat, coords[index].long))
   }
   map.setZoom(12)
 }
+
 
 const locationSelected = function () {
   updateLocationDisplay()
@@ -82,8 +78,6 @@ const getOneLocationSuccess = function (response) {
 }
 
 const addLocationSuccess = function (response) {
-  console.log('addLocationSuccess')
-  console.log(response)
   storeOneLocation(response)
   if (store.locations) {
     store.locations.push({
@@ -96,14 +90,11 @@ const addLocationSuccess = function (response) {
       id: response.location.id
     }]
   }
-  console.log('store.locations: ', store.locations)
   updateLocations()
   locationSelected()
 }
 
 const removeLocationSuccess = function (response) {
-  console.log('removeLocationSuccess')
-  console.log(response)
   store.locations = store.locations.filter((loc) => {
     return loc.id !== store.location.id
   })
@@ -120,19 +111,16 @@ const clearLocation = function () {
 
 // Store location names for later use
 const storeLocations = function (response) {
-  console.log('storeLocations')
   store.locations = response.locations.map((loc) => {
     return {
       name: loc.name,
       id: loc.id
     }
   })
-  console.log('store.locations: ', store.locations)
 }
 
 // Add locations to the dropdown menu
 const updateLocations = function () {
-  console.log('updateLocations')
   if (store.locations.length > 0) {
     locationsElement.html('')
     const newLocations = locationsTemplate({locations: store.locations})
@@ -149,21 +137,16 @@ const updateLocations = function () {
 
 // Store the location so we can update it later
 const storeOneLocation = function (response) {
-  console.log('storeOneLocation')
   store.location = response.location
 }
 
 // Update activities display with the activities in the store
 const updateActivityDisplay = function () {
-  console.log('updateActivityDisplay')
-  // console.log(store.location.activities)
   const newActivities = activitiesTemplate({activities: store.location.activities})
   activitiesElement.html('')
   activitiesElement.append(newActivities)
   $('.removeactivity-button').on('click', (event) => {
-    console.log('remove activity click!')
     const name = $(event.delegateTarget).parent().data('name')
-    console.log('Name:', name)
     api.removeActivity(name)
       .then(removeActivitySuccess)
       .then(() => removeActivityFromStore(name))
@@ -173,15 +156,11 @@ const updateActivityDisplay = function () {
 
 // landmarks Display
 const updateLandmarksDisplay = function () {
-  console.log('updateLandmarksDisplay')
-  // console.log(store.location.landmarks)
   const newLandmarks = landmarksTemplate({landmarks: store.location.landmarks})
   landmarksElement.html('')
   landmarksElement.append(newLandmarks)
   $('.removelandmark-button').on('click', (event) => {
-    console.log('remove landmark click!')
     const name = $(event.delegateTarget).parent().data('name')
-    console.log('Name:', name)
     api.removeLandmark(name)
       .then(removeLandmarkSuccess)
       .then(() => removeLandmarkFromStore(name))
@@ -191,15 +170,11 @@ const updateLandmarksDisplay = function () {
 
 // restaurants Display
 const updateRestaurantsDisplay = function () {
-  console.log('updateRestaurantsDisplay')
-  // console.log(store.location.food)
   const newRestaurants = restaurantsTemplate({restaurants: store.location.food})
   restaurantsElement.html('')
   restaurantsElement.append(newRestaurants)
   $('.removerestaurant-button').on('click', (event) => {
-    console.log('remove restaurant click!')
     const name = $(event.delegateTarget).parent().data('name')
-    console.log('Name:', name)
     api.removeRestaurant(name)
       .then(removeRestaurantSuccess)
       .then(() => removeRestaurantFromStore(name))
@@ -209,15 +184,11 @@ const updateRestaurantsDisplay = function () {
 
 // comments Display
 const updateCommentsDisplay = function () {
-  console.log('updateCommentsDisplay')
-  // console.log(store.location.comments)
   const newComments = commentsTemplate({comments: store.location.comments})
   commentsElement.html('')
   commentsElement.append(newComments)
   $('.removecomment-button').on('click', (event) => {
-    console.log('remove comment click!')
     const name = $(event.delegateTarget).parent().data('name')
-    console.log('Name:', name)
     api.removeComment(name)
       .then(removeCommentSuccess)
       .then(() => removeCommentFromStore(name))
@@ -227,7 +198,6 @@ const updateCommentsDisplay = function () {
 
 // Update display of location with the information in the store
 const updateLocationDisplay = function () {
-  console.log('updateLocationDisplay')
   locationTitleElement.text(store.location.name)
   updateActivityDisplay()
   updateLandmarksDisplay()
@@ -237,115 +207,85 @@ const updateLocationDisplay = function () {
 
 // Success message for new activity
 const addActivitySuccess = function (response) {
-  console.log('addActivitySuccess')
-  console.log(response)
   $('#-addactivity-modal').modal('hide')
 }
 
 const removeActivitySuccess = function (response) {
-  console.log('removeActivitySuccess')
-  console.log(response)
 }
 
 const removeActivityFromStore = function (name) {
-  console.log('removeActivityFromStore')
   const index = store.location.activities.indexOf(name.toString())
-  console.log('Index:', index)
   store.location.activities.splice(index, 1)
   updateActivityDisplay()
 }
 
 const removeLandmarkSuccess = function (response) {
-  console.log('removeLandmarkSuccess')
-  console.log(response)
 }
 
 const removeLandmarkFromStore = function (name) {
-  console.log('removeLandmarkFromStore')
   const index = store.location.landmarks.indexOf(name.toString())
-  console.log('Index:', index)
   store.location.landmarks.splice(index, 1)
   updateLandmarksDisplay()
 }
 
 const removeRestaurantSuccess = function (response) {
-  console.log('removeRestaurantSuccess')
-  console.log(response)
 }
 
 const removeRestaurantFromStore = function (name) {
-  console.log('removeRestaurantFromStore')
   const index = store.location.food.indexOf(name.toString())
-  console.log('Index:', index)
   store.location.food.splice(index, 1)
   updateRestaurantsDisplay()
 }
 
 const removeCommentSuccess = function (response) {
-  console.log('removeCommentSuccess')
-  console.log(response)
 }
 
 const removeCommentFromStore = function (name) {
-  console.log('removeCommentFromStore')
   const index = store.location.comments.indexOf(name.toString())
-  console.log('Index:', index)
   store.location.comments.splice(index, 1)
   updateCommentsDisplay()
 }
 
 // Add activity to local store
 const storeOneActivity = function (name) {
-  console.log('storeOneActivity')
   store.location.activities.push(name)
   updateActivityDisplay()
 }
 
 // Success message for new landmark
 const addLandmarkSuccess = function (response) {
-  console.log('addLandmarkSuccess')
-  console.log(response)
   $('#-addlandmark-modal').modal('hide')
 }
 
 // Add landmark to local store
 const storeOneLandmark = function (name) {
-  console.log('storeOneLandmark')
   store.location.landmarks.push(name)
   updateLandmarksDisplay()
 }
 
 // Success message for new restaurant
 const addRestaurantSuccess = function (response) {
-  console.log('addRestaurantSuccess')
-  console.log(response)
   $('#-addrestaurant-modal').modal('hide')
 }
 
 // Add restaurant to local store
 const storeOneRestaurant = function (name) {
-  console.log('storeOneRestaurant')
   store.location.food.push(name)
   updateRestaurantsDisplay()
 }
 
 // Success message for new comment
 const addCommentSuccess = function (response) {
-  console.log('addCommentSuccess')
-  console.log(response)
   $('#-addcomment-modal').modal('hide')
 }
 
 // Add comment to local store
 const storeOneComment = function (name) {
-  console.log('storeOneComment')
   store.location.comments.push(name)
   updateCommentsDisplay()
 }
 
 const failure = function (response) {
-  console.log('There was an error!')
-  console.log(response)
 }
 
 module.exports = {
