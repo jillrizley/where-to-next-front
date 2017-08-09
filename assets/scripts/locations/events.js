@@ -17,13 +17,27 @@ const onAddLocation = function (event) {
   console.log('Target: ', event.delegateTarget)
   event.preventDefault()
   const name = $(event.delegateTarget).children('p').text()
-  console.log(name)
-  if (store.user) {
-    api.addLocation(name)
-      .then(ui.addLocationSuccess)
+  console.log('name', name)
+  console.log('store.locations', store.locations)
+  let index = -1
+  if (store.locations) {
+    index = store.locations.findIndex(loc => loc.name === name)
+  }
+  if (index > -1) {
+    console.log('found!!!!!!!!!!!!!!!!!!!!!!!')
+    console.log('index:', index)
+    const id = store.locations[index].id
+    api.getOneLocation(id)
+      .then(ui.getOneLocationSuccess)
       .catch(ui.failure)
   } else {
-    console.log('You must sign in!')
+    if (store.user) {
+      api.addLocation(name)
+        .then(ui.addLocationSuccess)
+        .catch(ui.failure)
+    } else {
+      console.log('You must sign in!')
+    }
   }
 }
 
