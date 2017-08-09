@@ -40,6 +40,7 @@ const getOneLocationSuccess = function (response) {
   storeOneLocation(response)
   updateLocationDisplay()
   showLocationDisplay()
+  $('html, body').animate({ scrollTop: 0 }, 'slow')
 }
 
 const addLocationSuccess = function (response) {
