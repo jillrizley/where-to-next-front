@@ -1,5 +1,6 @@
 {{#each landmarks}}
-<div>
+<div data-name="{{this}}">
   {{this}}
+  <button type="button" class="removelandmark-button btn btn-danger">X</button>
 </div>
 {{/each}}

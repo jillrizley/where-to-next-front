@@ -1,5 +1,6 @@
 {{#each activities}}
-<div>
+<div data-name="{{this}}">
   {{this}}
+  <button type="button" class="removeactivity-button btn btn-danger">X</button>
 </div>
 {{/each}}

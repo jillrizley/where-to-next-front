@@ -88,13 +88,61 @@ const addComment = (name) => {
   })
 }
 
+const removeActivity = (name) => {
+  return $.ajax({
+    url: config.apiOrigin + '/activities/' + store.location.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: { activity: {name} }
+  })
+}
+
+const removeLandmark = (name) => {
+  return $.ajax({
+    url: config.apiOrigin + '/landmarks/' + store.location.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: { landmark: {name} }
+  })
+}
+
+const removeRestaurant = (name) => {
+  return $.ajax({
+    url: config.apiOrigin + '/food/' + store.location.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: { food: {name} }
+  })
+}
+
+const removeComment = (name) => {
+  return $.ajax({
+    url: config.apiOrigin + '/comments/' + store.location.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: { comment: {name} }
+  })
+}
+
 module.exports = {
   getLocations,
   getOneLocation,
   addLocation,
   removeLocation,
   addActivity,
+  removeActivity,
   addLandmark,
+  removeLandmark,
   addRestaurant,
-  addComment
+  removeRestaurant,
+  addComment,
+  removeComment
 }

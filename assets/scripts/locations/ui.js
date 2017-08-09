@@ -120,9 +120,15 @@ const updateActivityDisplay = function () {
   const newActivities = activitiesTemplate({activities: store.location.activities})
   activitiesElement.html('')
   activitiesElement.append(newActivities)
-  // $('.removeactivity-button').on('click', (event) => {
-  //   REMOVE ACTIVITY SKREEE
-  // })
+  $('.removeactivity-button').on('click', (event) => {
+    console.log('remove activity click!')
+    const name = $(event.delegateTarget).parent().data('name')
+    console.log('Name:', name)
+    api.removeActivity(name)
+      .then(removeActivitySuccess)
+      .then(() => removeActivityFromStore(name))
+      .catch(failure)
+  })
 }
 
 // landmarks Display
@@ -132,6 +138,15 @@ const updateLandmarksDisplay = function () {
   const newLandmarks = landmarksTemplate({landmarks: store.location.landmarks})
   landmarksElement.html('')
   landmarksElement.append(newLandmarks)
+  $('.removelandmark-button').on('click', (event) => {
+    console.log('remove landmark click!')
+    const name = $(event.delegateTarget).parent().data('name')
+    console.log('Name:', name)
+    api.removeLandmark(name)
+      .then(removeLandmarkSuccess)
+      .then(() => removeLandmarkFromStore(name))
+      .catch(failure)
+  })
 }
 
 // restaurants Display
@@ -141,6 +156,15 @@ const updateRestaurantsDisplay = function () {
   const newRestaurants = restaurantsTemplate({restaurants: store.location.food})
   restaurantsElement.html('')
   restaurantsElement.append(newRestaurants)
+  $('.removerestaurant-button').on('click', (event) => {
+    console.log('remove restaurant click!')
+    const name = $(event.delegateTarget).parent().data('name')
+    console.log('Name:', name)
+    api.removeRestaurant(name)
+      .then(removeRestaurantSuccess)
+      .then(() => removeRestaurantFromStore(name))
+      .catch(failure)
+  })
 }
 
 // comments Display
@@ -150,6 +174,15 @@ const updateCommentsDisplay = function () {
   const newComments = commentsTemplate({comments: store.location.comments})
   commentsElement.html('')
   commentsElement.append(newComments)
+  $('.removecomment-button').on('click', (event) => {
+    console.log('remove comment click!')
+    const name = $(event.delegateTarget).parent().data('name')
+    console.log('Name:', name)
+    api.removeComment(name)
+      .then(removeCommentSuccess)
+      .then(() => removeCommentFromStore(name))
+      .catch(failure)
+  })
 }
 
 // Update display of location with the information in the store
@@ -166,6 +199,58 @@ const updateLocationDisplay = function () {
 const addActivitySuccess = function (response) {
   console.log('addActivitySuccess')
   console.log(response)
+}
+
+const removeActivitySuccess = function (response) {
+  console.log('removeActivitySuccess')
+  console.log(response)
+}
+
+const removeActivityFromStore = function (name) {
+  console.log('removeActivityFromStore')
+  const index = store.location.activities.indexOf(name.toString())
+  console.log('Index:', index)
+  store.location.activities.splice(index, 1)
+  updateActivityDisplay()
+}
+
+const removeLandmarkSuccess = function (response) {
+  console.log('removeLandmarkSuccess')
+  console.log(response)
+}
+
+const removeLandmarkFromStore = function (name) {
+  console.log('removeLandmarkFromStore')
+  const index = store.location.landmarks.indexOf(name.toString())
+  console.log('Index:', index)
+  store.location.landmarks.splice(index, 1)
+  updateLandmarksDisplay()
+}
+
+const removeRestaurantSuccess = function (response) {
+  console.log('removeRestaurantSuccess')
+  console.log(response)
+}
+
+const removeRestaurantFromStore = function (name) {
+  console.log('removeRestaurantFromStore')
+  const index = store.location.food.indexOf(name.toString())
+  console.log('Index:', index)
+  store.location.food.splice(index, 1)
+  updateRestaurantsDisplay()
+}
+
+const removeCommentSuccess = function (response) {
+  console.log('removeCommentSuccess')
+  console.log(response)
+}
+
+const removeCommentFromStore = function (name) {
+  console.log('removeCommentFromStore')
+  const index = store.location.comments.indexOf(name.toString())
+  console.log('Index:', index)
+  store.location.comments.splice(index, 1)
+  updateCommentsDisplay()
 }
 
 // Add activity to local store
