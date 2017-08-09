@@ -17,9 +17,12 @@ const onAddLocation = function (event) {
   console.log('Target: ', event.delegateTarget)
   event.preventDefault()
   const name = $(event.delegateTarget).children('p').text()
-  console.log(name)
+  console.log('name', name)
+  console.log('store.locations', store.locations)
   if (store.locations && store.locations.includes(name)) {
+    console.log('found!!!!!!!!!!!!!!!!!!!!!!!')
     const index = store.locations.indexOf(name)
+    console.log('index:', index)
     const id = store.locations[index].id
     api.getOneLocation(id)
       .then(ui.getOneLocationSuccess)
