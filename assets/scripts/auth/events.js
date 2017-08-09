@@ -15,7 +15,7 @@ const onSignUp = function (event) {
     .then(ui.signUpSuccess)
     .then(() => api.signIn(data))
     .then(ui.signInSuccess)
-    .catch(ui.failure)
+    .catch(ui.signUpError)
 }
 
 // prevents page from refreshing and calls function from ./api
@@ -28,7 +28,7 @@ const onSignIn = function (event) {
     .then(ui.signInSuccess)
     .then(() => locationsApi.getLocations())
     .then(locationsUi.getLocationsSuccess)
-    .catch(ui.failure)
+    .catch(ui.signInError)
 }
 
 // prevents page from refreshing and calls function from ./api
@@ -39,7 +39,7 @@ const onChangePassword = function (event) {
   event.preventDefault()
   api.changePassword(data)
     .done(ui.changePasswordSuccess)
-    .catch(ui.failure)
+    .catch(ui.changePasswordError)
 }
 
 // prevents page from refreshing and calls function from ./api

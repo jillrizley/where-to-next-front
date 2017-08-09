@@ -10,6 +10,10 @@ const signUpSuccess = (response) => {
 }
 
 const signUpError = (response) => {
+  $('#sign-up-error').removeClass('hidden')
+  setTimeout(() => {
+    $('#sign-up-error').addClass('hidden')
+  }, 1500)
 }
 
 const signInSuccess = (response) => {
@@ -24,6 +28,10 @@ const signInSuccess = (response) => {
 }
 
 const signInError = (response) => {
+  $('#sign-in-error').removeClass('hidden')
+  setTimeout(() => {
+    $('#sign-in-error').addClass('hidden')
+  }, 1500)
 }
 
 const signOutSuccess = (response) => {
@@ -48,6 +56,10 @@ const changePasswordSuccess = (response) => {
 }
 
 const changePasswordError = (response) => {
+  $('#changepwd-error').removeClass('hidden')
+  setTimeout(() => {
+    $('#changepwd-error').addClass('hidden')
+  }, 1500)
 }
 
 const forceSignIn = function () {
