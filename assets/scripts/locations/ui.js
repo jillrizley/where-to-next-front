@@ -111,6 +111,7 @@ const removeLocationSuccess = function (response) {
   clearLocation()
   hideLocationDisplay()
   $('#-removelocation-modal').modal('hide')
+  $('#signedin-header').removeClass('hidden')
 }
 
 const clearLocation = function () {
