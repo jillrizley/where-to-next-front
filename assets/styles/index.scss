@@ -22,25 +22,37 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   background-color: grey;
 }
 
-
 #-signup-button,
 #-logout-button,
 #-changepwd-button,
 #locations-dropdown-button,
-#locations-dropdown {
+#locations-dropdown,
+#-removelocation-modal {
   font-family: 'Comfortaa';
   font-variant: small-caps;
 }
 
-h1 {
+h2 {
   font-family: 'Comfortaa';
-  font-variant: small-caps;
-  }
+}
 
+.list-item {
+  background-color: #fafafa;
+  border-radius: 1px;
+  padding: 1px;
+}
+
+h1,
 h3 {
   font-family: 'Comfortaa';
   font-variant: small-caps;
   }
+
+hr {
+  color: grey;
+  background-color: grey;
+  height: 1px;
+}
 
 .img-wrap {
   display: inline-block;
